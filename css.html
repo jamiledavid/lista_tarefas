@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas Jamile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            font-size: 20px;
+            color: #333;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            background-color: #f8f9fa;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .counter {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Lista de Tarefas Jamile </h1>
+    
+    <input type="text" id="taskInput" placeholder="Adicione uma nova tarefa">
+    <button onclick="addTask()">+</button>
+    
+    <ul id="taskList"></ul>
+    
+    <div class="counter">
+        Criadas: <span id="taskCount">0</span>
+    </div>
+</div>
+
+<script>
+    let taskCount = 0;
+
+    function addTask() {
+        const taskInput = document.getElementById("taskInput");
+        const taskList = document.getElementById("taskList");
+
+        if (taskInput.value === "") {
+            alert("Por favor, adicione uma tarefa.");
+            return;
+        }
+
+        // Criar novo item de lista
+        const li = document.createElement("li");
+        li.textContent = taskInput.value;
+
+        // Adiciona o item na lista
+        taskList.appendChild(li);
+
+        // Limpa o campo de input
+        taskInput.value = "";
+
+        // Atualiza o contador de tarefas
+        taskCount++;
+        document.getElementById("taskCount").textContent = taskCount;
+    }
+</script>
+
+</body>
+</html>
